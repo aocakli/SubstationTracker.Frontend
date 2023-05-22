@@ -1,0 +1,50 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<ng-template #emptyTemplate>
+	<shared-empty-template [message]="'Hiç şube bulunamadı.'"></shared-empty-template>
+</ng-template>
+
+<div class="row">
+	<ng-container *ngIf="substations.length > 0; else emptyTemplate">
+		<ng-container *ngFor="let substation of substations">
+			<div class="col-12 col-xl-6">
+				<div class="card card-primary card-outline">
+					<div class="card-header">
+						<h5 class="m-0 font-weight-bold">{{ substation.name }}</h5>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-12 col-xl-8">
+								<p class="card-text mb-0"><span class="font-weight-bold">Sektörler: </span> {{ substation.sectors.join(', ') }}</p>
+								<p class="card-text mb-0"><span class="font-weight-bold">Sorumlular: </span> {{ substation.responsibleUserFullNames.join(', ') || "Yok" }}</p>
+								<p class="card-text mb-0"><span class="font-weight-bold">Adres: </span> {{ substation.address }}</p>
+								<p class="card-text mb-0"><span class="font-weight-bold">Telefon: </span> {{ substation.phoneNumber }}</p>
+								<p class="card-text"><span class="font-weight-bold">Açıklama: </span>{{ substation.description }}</p>
+
+								<div class="card-custom-actions">
+									<button (click)="openDetail(substation)" type="button" class="btn btn-primary font-weight-bold px-4">Detay</button>
+									<a [routerLink]="'/products/' + substation.id" type="button" class="btn btn-primary font-weight-bold px-4">Ürünler</a>
+									<a [routerLink]="'update/' + substation.id" type="button" class="btn btn-primary font-weight-bold px-4">Güncelle</a>
+									<button (click)="softDelete(substation.id)" type="button" class="btn btn-danger font-weight-bold px-4">Sil</button>
+									<a *ngIf="!substation.responsibleUserFullNames || substation.responsibleUserFullNames.length < 1" [routerLink]="'create/choice/'+substation.id" class="btn btn-primary font-weight-bold px-4">Sorumlu Ata</a>
+								</div>
+							</div>
+
+							<div *ngIf="!!substation.photoPath" class="col-12 col-xl-4">
+								<img [src]="substation.photoPath | withApiUrl" [alt]="substation.name" class="d-none d-xl-block custom-img" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+	</ng-container>
+</div>
+
+<ng-container *ngIf="substations.length > 0">
+	<div class="row">
+		<div class="col-12">
+			<p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="paginationResponse?.itemCount || 4" [totalRecords]="paginationResponse?.totalCount || 0" [rowsPerPageOptions]="[4, 6, 10]"></p-paginator>
+		</div>
+	</div>
+</ng-container>

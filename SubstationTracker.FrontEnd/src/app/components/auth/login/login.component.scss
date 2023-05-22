@@ -1,0 +1,12 @@
+:host {
+  display: block;
+
+  @media (max-width: 576px) {
+    .login-box,
+    .register-box {
+      margin-top: 0.5rem;
+      width: min(22.5rem, 95%);
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+    "debug.console.fontSize": 12,
+    "emmet.includeLanguages": {
+        "javascript": "html",
+        "typescript": "html",
+        "vue": "html",
+        "vue-html": "html",
+        "javascriptreact": "html"
+    },
+    "editor.tabSize": 4,
+    "editor.wordWrap": "off",
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": false,
+    "editor.insertSpaces": false,
+    "editor.wordWrapColumn": 2000,
+    "editor.minimap.enabled": false,
+    "editor.detectIndentation": false,
+    "editor.suggestSelection": "first",
+    "editor.wrappingStrategy": "simple",
+    "editor.scrollBeyondLastLine": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.fontFamily": "'JetBrains Mono', JetBrains Mono, 'Source Sans Pro', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": false,
+    "files.trimTrailingWhitespace": true,
+    "liveServer.settings.CustomBrowser": "blisk",
+    "html.format.extraLiners": "",
+    "html.format.wrapLineLength": 2000,
+    "html.format.endWithNewline": false,
+    "html.format.indentHandlebars": true,
+    "html.format.preserveNewLines": true,
+    "html.format.wrapAttributes": "auto",
+    "html-css-class-completion.enableEmmetSupport": true,
+    "[html]": {
+        "editor.wordWrap": "off",
+        "editor.wordWrapColumn": 2000,
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[css]": {
+        "editor.foldingStrategy": "indentation",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[less]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[sass]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": false,
+        "files.trimFinalNewlines": true
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.minimap.enabled": true
+    },
+    "npm-scripts.showStartNotification": false,
+    "prettier.semi": true,
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true,
+    "prettier.printWidth": 2000,
+    "prettier.endOfLine": "auto",
+    "prettier.singleQuote": true,
+    "prettier.proseWrap": "preserve",
+    "prettier.trailingComma": "none",
+    "prettier.jsxBracketSameLine": true,
+    "prettier.vueIndentScriptAndStyle": true,
+    "prettier.htmlWhitespaceSensitivity": "ignore",
+    "svg.preview.background": "transparent",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+}

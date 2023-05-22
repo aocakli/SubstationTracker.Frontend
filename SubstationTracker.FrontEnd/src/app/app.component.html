@@ -1,0 +1,16 @@
+<router-outlet></router-outlet>
+
+<p-confirmDialog #cd [breakpoints]="confirmDialogBreakpoints" icon="pi pi-exclamation-triangle">
+	<ng-template pTemplate="footer">
+		<button (click)="cd.reject()" type="button" class="btn btn-primary font-weight-bold px-md-4">
+			<i class="fas fa-times mr-2"></i>
+			<span>İptal</span>
+		</button>
+		<button (click)="cd.accept()" type="button" class="btn btn-primary font-weight-bold px-md-4">
+			<i class="fas fa-check mr-2"></i>
+			<span>Onayla</span>
+		</button>
+	</ng-template>
+</p-confirmDialog>
+
+<ngx-spinner size="medium" type="ball-scale-pulse"></ngx-spinner>

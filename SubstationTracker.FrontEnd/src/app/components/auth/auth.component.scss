@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+::ng-deep {
+  body {
+    background: url(/assets/dist/img/photo4.jpg) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+  }
+}

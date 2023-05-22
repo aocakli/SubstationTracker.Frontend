@@ -1,0 +1,28 @@
+<ng-template #goBackButton>
+	<button goBack class="btn btn-primary font-weight-bold px-4">
+		<i class="fas fa-arrow-left mr-2"></i>
+		<span>Geri</span>
+	</button>
+</ng-template>
+
+<ng-template #createWithAction>
+	<button (click)="config.clickCallback?.()" class="btn btn-primary font-weight-bold px-4">
+		<i class="fas fa-plus-circle mr-2"></i>
+		<span>Yeni Ekle</span>
+	</button>
+</ng-template>
+
+<ng-template #createNewButton>
+	<ng-container *ngIf="!config.clickCallback; else createWithAction">
+		<a [routerLink]="config.routerLink || '/'" class="btn btn-primary font-weight-bold px-4">
+			<i class="fas fa-plus-circle mr-2"></i>
+			<span>Yeni Ekle</span>
+		</a>
+	</ng-container>
+</ng-template>
+
+<div class="d-flex align-items-end justify-content-between mb-3">
+	<h4 class="m-0">{{ config.titile }}</h4>
+
+	<ng-container *ngIf="config.type === 'go-back'; then goBackButton; else createNewButton"></ng-container>
+</div>

@@ -1,0 +1,36 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<div *ngIf="updateForm" class="row">
+	<div class="col-12 col-xl-8">
+		<div class="card card-primary card-outline">
+			<div class="card-body">
+				<form [formGroup]="updateForm" (ngSubmit)="submitForm()">
+					<div class="form-group">
+						<label for="name">Sektör Adı*</label>
+						<input formControlName="name" id="name" placeholder="Sektör adını girin" class="form-control" [class.is-invalid]="controls?.name?.dirty && controls?.name?.errors" />
+
+						<div *ngIf="!!controls?.name?.errors" class="invalid-feedback">
+							<p *ngIf="controls?.name?.dirty && controls?.name?.errors?.required" class="font-weight-bold">Sektör Adını boş bırakmayın.</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="description">Sektör Açıklaması*</label>
+						<textarea formControlName="description" id="description" placeholder="Sektör açıklamasını girin" class="form-control" [class.is-invalid]="controls?.description?.dirty && controls?.description?.errors"></textarea>
+
+						<div *ngIf="!!controls?.description?.errors" class="invalid-feedback">
+							<p *ngIf="controls?.description?.dirty && controls?.description?.errors?.required" class="font-weight-bold">Sektör Açıklamasını boş bırakmayın.</p>
+						</div>
+					</div>
+
+					<div class="text-right">
+						<button type="submit" class="btn btn-primary px-4">
+							<i class="fas fa-save mr-2"></i>
+							<span>Güncelle</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

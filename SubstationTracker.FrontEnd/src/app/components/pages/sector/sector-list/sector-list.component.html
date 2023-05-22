@@ -1,0 +1,36 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<ng-template #emptyTemplate>
+	<shared-empty-template [message]="'Hiç sektör bulunamadı.'"></shared-empty-template>
+</ng-template>
+
+<div class="row">
+	<ng-container *ngIf="sectors.length > 0; else emptyTemplate">
+		<div *ngFor="let sector of sectors" class="col-12 col-md-6 col-xl-3">
+			<div class="card card-primary card-outline">
+				<div class="card-header">
+					<h5 class="m-0 font-weight-bold">{{ sector.name }}</h5>
+				</div>
+
+				<div class="card-body">
+					<p class="card-text">{{ sector.description || 'Açıklama Yok' }}</p>
+				</div>
+
+				<div class="card-footer">
+					<div class="card-custom-actions">
+						<a [routerLink]="'update/' + sector.id" class="btn btn-primary font-weight-bold px-4">Güncelle</a>
+						<button (click)="softDelete(sector.id)" type="button" class="btn btn-danger font-weight-bold px-4">Sil</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+</div>
+
+<ng-container *ngIf="sectors.length > 0">
+	<div class="row">
+		<div class="col-12">
+			<p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="paginationResponse?.itemCount || 8" [totalRecords]="paginationResponse?.totalCount || 0" [rowsPerPageOptions]="[4, 8, 12, 16]"></p-paginator>
+		</div>
+	</div>
+</ng-container>

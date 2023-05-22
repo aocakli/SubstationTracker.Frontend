@@ -1,0 +1,20 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<div class="row">
+	<div class="col-12 col-xl-8">
+		<div class="card card-primary card-outline">
+			<div class="card-header">
+				<h5 class="m-0">Sorumluyu nasıl atamak istiyorsun?</h5>
+			</div>
+			<div class="card-body">
+				<p class="card-title">Sorumluyu nasıl atayacağını seç</p>
+			</div>
+			<div class="card-footer">
+				<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+					<a [routerLink]="'/substations/create/create/' + substationId" class="btn btn-primary font-weight-bold">Yeni Kullanıcı Ekle</a>
+					<a [routerLink]="'/substations/create/select/' + substationId" class="btn btn-primary font-weight-bold">Mevcut Kullanıclardan Seç</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

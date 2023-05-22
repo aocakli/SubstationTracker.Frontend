@@ -1,0 +1,100 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<div *ngIf="updateForm" class="row">
+	<div class="col-12 col-xl-8">
+		<div class="card card-primary card-outline">
+			<div class="card-body">
+				<form [formGroup]="updateForm" (ngSubmit)="submitForm()">
+					<div class="row">
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="name">Şube Adı*</label>
+								<input formControlName="name" id="name" placeholder="Şube adını girin" class="form-control" [class.is-invalid]="controls?.name?.dirty && controls?.name?.errors" />
+
+								<div *ngIf="!!controls?.name?.errors" class="invalid-feedback">
+									<p *ngIf="controls?.name?.dirty && controls?.name?.errors?.required" class="font-weight-bold">Şube Adını boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="sectorIdentities">Sektör Seçimi*</label>
+								<p-multiSelect [options]="sectors" formControlName="sectorIdentities" inputId="sectorIdentities" [maxSelectedLabels]="2" optionLabel="name" optionValue="id" filterPlaceHolder="Sektör arayın" placeholder="Sektör seçin" appendTo="body"></p-multiSelect>
+
+								<div *ngIf="!!controls?.sectorIdentities?.errors">
+									<small *ngIf="controls?.sectorIdentities?.dirty && controls?.sectorIdentities?.errors?.required" class="font-weight-bold text-red">Sektör seçin.</small>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="phoneNumber">Telefon Numarası*</label>
+								<p-inputMask type="tel" mask="(999) 999-9999" [unmask]="true" formControlName="phoneNumber" inputId="phoneNumber" placeholder="Başında ülke kodu olmadan"></p-inputMask>
+
+								<div *ngIf="!!controls?.phoneNumber?.errors">
+									<small *ngIf="controls?.phoneNumber?.dirty && controls?.phoneNumber?.errors?.required" class="font-weight-bold text-red">Telefon Numarasını boş bırakmayın.</small>
+									<small *ngIf="controls?.phoneNumber?.dirty && controls?.phoneNumber?.errors?.minlength || controls?.phoneNumber?.errors?.maxlength" class="font-weight-bold text-red">Telefon Numarasını 10 karakter olacak şekilde girin.</small>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="description">Açıklama*</label>
+								<input formControlName="description" id="description" placeholder="Şube ile ilgili açıklama" class="form-control" [class.is-invalid]="controls?.description?.dirty && controls?.description?.errors" />
+
+								<div *ngIf="!!controls?.description?.errors" class="invalid-feedback">
+									<p *ngIf="controls?.description?.dirty && controls?.description?.errors?.required" class="font-weight-bold">Açıklamayı boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="form-group">
+								<label for="address">Address*</label>
+								<textarea formControlName="address" id="address" rows="3" placeholder="Adres girin" class="form-control" [class.is-invalid]="controls?.address?.dirty && controls?.address?.errors"></textarea>
+
+								<div *ngIf="!!controls?.address?.errors" class="invalid-feedback">
+									<p *ngIf="controls?.address?.dirty && controls?.address?.errors?.required" class="font-weight-bold">Adresi boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="form-group">
+								<label for="image">Resim <small>(Opsiyonel)</small></label>
+
+								<div class="input-group">
+									<div class="custom-file">
+										<input type="file" accept=".png, .jpg, .png" (change)="onFileChange($event)" class="custom-file-input" id="image">
+										<label class="custom-file-label" for="image">{{ imageText }}</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 text-right">
+							<button type="submit" class="btn btn-primary px-4">
+								<i class="fas fa-save mr-2"></i>
+								<span>Kaydet</span>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="fileString" class="col-12 col-xl-4">
+		<div class="card card-primary card-outline">
+			<div class="card-header">
+				<h5 class="m-0">Seçilen Resim</h5>
+			</div>
+			<div class="card-body p-0">
+				<img [src]="fileString" alt="Şube Resimi" style="max-width: 100%;" />
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+:host {
+  display: block;
+
+  ::ng-deep {
+    .p-element {
+      height: 37px;
+
+	  .p-element.p-multiselect-label-container {
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 0.20rem;
+      }
+
+      .p-component {
+        width: 100%;
+      }
+    }
+  }
+}

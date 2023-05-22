@@ -1,0 +1,15 @@
+<ng-container *ngIf="product.sectors.length > 0">
+	<ng-container *ngFor="let sector of product.sectors; let index = index">
+		<p class="mb-0"><span class="font-weight-bold">{{getIndexForRead(index)}}. Sektör Adı: </span> {{ sector.sectorName }}</p>
+		<p class="mb-0"><span class="font-weight-bold">{{getIndexForRead(index)}}. Sektör Oluşturuma Tarihi: </span> {{ sector.createdDate | date: dateFormatEnum.fullDate }}</p>
+		<hr />
+	</ng-container>
+</ng-container>
+
+<p class="mb-0"><span class="font-weight-bold">Birim: </span>{{ product.unit }}</p>
+<p class="mb-0"><span class="font-weight-bold">Oluşturulma Tarihi: </span>{{ product.createdDate | date: dateFormatEnum.fullDate }}</p>
+
+<ng-container *ngIf="!!product.photoPath">
+	<hr />
+	<img [src]="product.photoPath | withApiUrl" [alt]="product.name" class="w-100" />
+</ng-container>

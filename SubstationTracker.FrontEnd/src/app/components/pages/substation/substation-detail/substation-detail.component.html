@@ -1,0 +1,10 @@
+<p class="mb-0"><span class="font-weight-bold">Sektörler: </span> {{ substation.sectors.join(', ') }}</p>
+<p class="mb-0"><span class="font-weight-bold">Sorumlular: </span> {{ substation.responsibleUserFullNames.join(', ') || "Yok" }}</p>
+<p class="mb-0"><span class="font-weight-bold">Adres: </span> {{ substation.address }}</p>
+<p class="mb-0"><span class="font-weight-bold">Telefon: </span> {{ substation.phoneNumber }}</p>
+<p class="mb-0"><span class="font-weight-bold">Açıklama: </span>{{ substation.description }}</p>
+
+<ng-container *ngIf="!!substation.photoPath">
+	<hr />
+	<img [src]="substation.photoPath | withApiUrl" [alt]="substation.name" class="w-100" />
+</ng-container>

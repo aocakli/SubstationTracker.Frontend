@@ -1,0 +1,74 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<div *ngIf="createForm" class="row">
+	<div class="col-12 col-xl-8">
+		<div class="card card-primary card-outline">
+			<div class="card-body">
+				<form [formGroup]="createForm" (ngSubmit)="submitForm()">
+					<div class="row">
+						<div class="col-12 col-xl-6">
+							<div formGroupName="user" class="form-group">
+								<label for="name">Ad</label>
+								<input formControlName="name" id="name" placeholder="Sorumlu adını girin" class="form-control" [class.is-invalid]="userControls.name.dirty && userControls.name.errors" />
+
+								<div *ngIf="!!userControls?.name?.errors" class="invalid-feedback">
+									<p *ngIf="userControls?.name?.dirty && userControls?.name?.errors?.required" class="font-weight-bold">Sorumlu adını boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div formGroupName="user" class="form-group">
+								<label for="surname">Soy Ad</label>
+								<input formControlName="surname" id="surname" placeholder="Sorumlu soyadını girin" class="form-control" [class.is-invalid]="userControls.surname.dirty && userControls.surname.errors" />
+
+								<div *ngIf="!!userControls?.surname?.errors" class="invalid-feedback">
+									<p *ngIf="userControls?.surname?.dirty && userControls?.surname?.errors?.required" class="font-weight-bold">Sorumlu soy adını boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div formGroupName="user" class="form-group">
+								<label for="email">E-Posta</label>
+								<input type="email" formControlName="email" id="email" placeholder="Sorumlu e-postasını girin" class="form-control" [class.is-invalid]="userControls.email.dirty && userControls.email.errors" />
+
+								<div *ngIf="!!userControls?.email?.errors" class="invalid-feedback">
+									<p *ngIf="userControls?.email?.dirty && userControls?.email?.errors?.required" class="font-weight-bold">Sorumlu emailini boş bırakmayın.</p>
+									<p *ngIf="userControls?.email?.dirty && userControls?.email?.errors?.email" class="font-weight-bold">Girdiğiniz e-posta adresi geçersiz formatta.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div formGroupName="user" class="form-group">
+								<label for="password">Şifre</label>
+								<input formControlName="password" id="password" placeholder="Sorumlu şifresini girin" class="form-control" [class.is-invalid]="userControls.password.dirty && userControls.password.errors" />
+
+								<div *ngIf="!!userControls?.password?.errors" class="invalid-feedback">
+									<p *ngIf="userControls?.password?.dirty && userControls?.password?.errors?.required" class="font-weight-bold">Sorumlu şifresini boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="form-group">
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" id="forceAssign" formControlName="canForceAssignResponsibleToSubstation" class="custom-control-input" />
+									<label for="forceAssign" class="custom-control-label">Şubedeki diğer sorumlular silinsin mi?</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 text-right">
+							<button type="submit" class="btn btn-primary px-4">
+								<i class="fas fa-save mr-2"></i>
+								<span>Kaydet</span>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

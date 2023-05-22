@@ -1,0 +1,77 @@
+<shared-page-title [config]="pageTitleConfig"></shared-page-title>
+
+<div *ngIf="createForm" class="row">
+	<div class="col-12 col-xl-8">
+		<div class="card card-primary card-outline">
+			<div class="card-body">
+				<form [formGroup]="createForm" (ngSubmit)="submitForm()">
+					<div class="row">
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="name">Ürün Adı*</label>
+								<input formControlName="name" id="name" placeholder="Ürün adını girin" class="form-control" [class.is-invalid]="controls?.name?.dirty && controls?.name?.errors" />
+
+								<div *ngIf="!!controls?.name?.errors" class="invalid-feedback">
+									<p *ngIf="controls?.name?.dirty && controls?.name?.errors?.required" class="font-weight-bold">Ürün Adını boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="sectorIdentities">Sektör Seçimi*</label>
+								<p-multiSelect [options]="sectors" formControlName="sectorIdentities" inputId="sectorIdentities" [maxSelectedLabels]="2" optionLabel="name" optionValue="id" filterPlaceHolder="Sektör arayın" placeholder="Sektör seçin" appendTo="body"></p-multiSelect>
+
+								<div *ngIf="!!controls?.sectorIdentities?.errors">
+									<small *ngIf="controls?.sectorIdentities?.dirty && controls?.sectorIdentities?.errors?.required" class="font-weight-bold text-red">Sektör seçin.</small>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="unit">Birim*</label>
+								<input formControlName="unit" id="unit" placeholder="Ürün Birimi" class="form-control" [class.is-invalid]="controls?.unit?.dirty && controls?.unit?.errors" />
+
+								<div *ngIf="!!controls?.unit?.errors" class="invalid-feedback">
+									<p *ngIf="controls?.unit?.dirty && controls?.unit?.errors?.required" class="font-weight-bold">Birimi boş bırakmayın.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form-group">
+								<label for="image">Resim <small>(Opsiyonel)</small></label>
+
+								<div class="input-group">
+									<div class="custom-file">
+										<input type="file" accept=".png, .jpg, .png" (change)="onFileChange($event)" class="custom-file-input" id="image">
+										<label class="custom-file-label" for="image">{{ imageText }}</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 text-right">
+							<button type="submit" class="btn btn-primary px-4">
+								<i class="fas fa-save mr-2"></i>
+								<span>Kaydet</span>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="fileString" class="col-12 col-xl-4">
+		<div class="card card-primary card-outline">
+			<div class="card-header">
+				<h5 class="m-0">Seçilen Resim</h5>
+			</div>
+			<div class="card-body p-0">
+				<img [src]="fileString" alt="Ürün Resimi" style="max-width: 100%;" />
+			</div>
+		</div>
+	</div>
+</div>
